@@ -5,9 +5,14 @@ import com.arrigorriaga.bonoak.testing.repo.AdminRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+
 import java.util.List;
 import java.util.Optional;
 
+@LocalBean
+@Stateless
 @Service
 public class AdminService {
 
