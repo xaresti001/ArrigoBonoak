@@ -1,8 +1,8 @@
 package com.arrigorriaga.bonoak.testing.service;
 
 import com.arrigorriaga.bonoak.testing.model.Coupon;
+import com.arrigorriaga.bonoak.testing.presentation.manager.ManagerForm;
 import com.arrigorriaga.bonoak.testing.repo.CouponRepo;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +21,7 @@ import java.util.Optional;
 public class CouponService {
 
     private CouponRepo couponRepo;
+    private boolean show = false;
 
     @Autowired
     public CouponService(CouponRepo couponRepo) {
@@ -62,7 +63,20 @@ public class CouponService {
         return coupon;
     }
 
+    public boolean createSetOfCoupons(ManagerForm managerForm){
+        boolean control = false;
+        Coupon temp;
+        for(int i = 0; i<managerForm.getAmount(); i++){
+            temp = new Coupon(managerForm.getId()+i, managerForm.getType(), managerForm.getPrice(), 0);
+            if(createCoupon(temp)==null){
+                control = true;
+            }
+        }
+        return control;
+    }
+
     public List<Coupon> findAllCoupons(){
         return couponRepo.findAll();
     }
+
 }

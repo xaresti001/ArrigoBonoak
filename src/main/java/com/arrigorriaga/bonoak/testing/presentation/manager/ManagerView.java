@@ -9,6 +9,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -17,7 +18,9 @@ import java.util.List;
 public class ManagerView implements Serializable {
 
     private List<Coupon> coupon;
-
+    private List<Coupon> selectedCoupon;
+    private int show = 0;
+    private List<Coupon> temp;
     @EJB
     private CouponService couponService;
 
@@ -26,6 +29,13 @@ public class ManagerView implements Serializable {
             coupon = couponService.findAllCoupons();
         }
         return coupon;
+    }
+
+
+
+
+    public void resetView(){
+        coupon = null;
     }
 
 

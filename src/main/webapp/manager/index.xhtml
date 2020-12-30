@@ -4,7 +4,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-<ui:composition template="/layout.xhtml">
+<ui:composition template="../layout.xhtml">
     <ui:define name="title">MANAGER PANEL</ui:define>
     <ui:define name="content">
         <br/>
@@ -36,8 +36,22 @@
                 <f:facet name="header">Buying Time</f:facet>
                 #{coupon.buyingTime}
             </h:column>
-
         </h:dataTable>
+
+        <h2>Create New Coupons</h2>
+        <h:form value="#{managerForm}" var="newCoupon">
+            <br/>
+            Starting from Coupon ID: <h:inputText value="#{managerForm.id}"/>
+            <br/>
+            Coupon amount: <h:inputText value="#{managerForm.amount}"/>
+            <br/>
+            Coupon type: <h:inputText value="#{managerForm.type}"/>
+            <br/>
+            Coupon price: <h:inputText value="#{managerForm.price}"/>
+            <br/>
+            <h:commandButton actionListener="#{managerTask.createSetOfCoupons(managerForm, managerView)}" value="Create Set"/>
+            <h:outputText value="#{managerTask.message}"/>
+        </h:form>
 
 
     </ui:define>
