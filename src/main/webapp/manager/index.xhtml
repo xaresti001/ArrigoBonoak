@@ -39,51 +39,6 @@
             </tr>
         </table>
 
-
-        <h2>All Coupons List</h2>
-        <h:dataTable value="#{couponView.findAllCoupons()}" var="coupon" border="2">
-            <h:column>
-                <f:facet name="header">Coupon ID</f:facet>
-                #{coupon.id}
-            </h:column>
-
-            <h:column>
-                <f:facet name="header">Type</f:facet>
-                #{coupon.type}
-            </h:column>
-
-            <h:column>
-                <f:facet name="header">Price</f:facet>
-                #{coupon.price}
-            </h:column>
-
-            <h:column>
-                <f:facet name="header">Client ID</f:facet>
-                #{coupon.clientId}
-            </h:column>
-
-            <h:column>
-                <f:facet name="header">Buying Time</f:facet>
-                #{coupon.buyingTime}
-            </h:column>
-        </h:dataTable>
-
-        <h2>Create New Coupons</h2>
-        <h:form value="#{couponForm}">
-            <br/>
-            Starting from Coupon ID: <h:inputText value="#{couponForm.id}"/>
-            <br/>
-            Coupon amount: <h:inputText value="#{couponForm.amount}"/>
-            <br/>
-            Coupon type: <h:inputText value="#{couponForm.type}"/>
-            <br/>
-            Coupon price: <h:inputText value="#{couponForm.price}"/>
-            <br/>
-            <h:commandButton actionListener="#{couponTask.createSetOfCoupons(managerForm, managerView)}" value="Create Set"/>
-            <h:outputText value="#{couponTask.message}"/>
-        </h:form>
-
-
     </ui:define>
 </ui:composition>
 </html>

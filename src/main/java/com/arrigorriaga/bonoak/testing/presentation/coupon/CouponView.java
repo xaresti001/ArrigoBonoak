@@ -16,6 +16,7 @@ import java.util.List;
 public class CouponView implements Serializable {
 
     private List<Coupon> coupons;
+    private List<Coupon> assignedCoupons;
 
     @EJB
     private CouponService couponService;
@@ -27,8 +28,16 @@ public class CouponView implements Serializable {
         return coupons;
     }
 
+    public List<Coupon> findAssignedCoupons(){
+        if(assignedCoupons == null){
+            assignedCoupons = couponService.findAssignedCoupons();
+        }
+        return assignedCoupons;
+    }
+
     public void resetView(){
         coupons = null;
+        assignedCoupons = null;
     }
 
 }

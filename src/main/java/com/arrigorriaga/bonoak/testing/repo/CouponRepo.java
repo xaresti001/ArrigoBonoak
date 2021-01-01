@@ -8,4 +8,5 @@ import java.util.List;
 
 @Repository
 public interface CouponRepo extends JpaRepository<Coupon, Integer> {
+    List<Coupon> findCouponsByClientIdIsGreaterThan(int clientId);
 }

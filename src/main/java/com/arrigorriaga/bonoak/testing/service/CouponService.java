@@ -80,4 +80,8 @@ public class CouponService {
         return couponRepo.findAll();
     }
 
+    public List<Coupon> findAssignedCoupons(){
+        return couponRepo.findCouponsByClientIdIsGreaterThan(0);
+    }
+
 }
