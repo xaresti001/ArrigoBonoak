@@ -4,6 +4,7 @@ import com.arrigorriaga.bonoak.testing.model.Coupon;
 import com.arrigorriaga.bonoak.testing.presentation.coupon.CouponForm;
 import com.arrigorriaga.bonoak.testing.presentation.manager.ManagerForm;
 import com.arrigorriaga.bonoak.testing.repo.CouponRepo;
+import com.arrigorriaga.bonoak.testing.repo.UserRepo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,12 @@ import java.util.Optional;
 public class CouponService {
 
     private CouponRepo couponRepo;
-    private boolean show = false;
+    private UserRepo userRepo;
 
     @Autowired
-    public CouponService(CouponRepo couponRepo) {
+    public CouponService(CouponRepo couponRepo, UserRepo userRepo) {
         this.couponRepo = couponRepo;
+        this.userRepo = userRepo;
     }
 
     public Coupon findCouponById(int id){
@@ -82,6 +84,10 @@ public class CouponService {
 
     public List<Coupon> findAssignedCoupons(){
         return couponRepo.findCouponsByClientIdIsGreaterThan(0);
+    }
+
+    public List<Coupon> findCouponsByClientId(int clientId){
+        return couponRepo.findCouponsByClientIdIs(clientId);
     }
 
 }

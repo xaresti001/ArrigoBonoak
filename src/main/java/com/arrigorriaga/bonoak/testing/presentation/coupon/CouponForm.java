@@ -13,4 +13,5 @@ public class CouponForm {
     private int amount;
     private int type;
     private float price;
+    private int clientId;
 }

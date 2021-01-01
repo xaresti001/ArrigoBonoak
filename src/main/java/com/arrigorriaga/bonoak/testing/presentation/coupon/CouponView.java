@@ -17,6 +17,7 @@ public class CouponView implements Serializable {
 
     private List<Coupon> coupons;
     private List<Coupon> assignedCoupons;
+    private List<Coupon> couponsByClientId;
 
     @EJB
     private CouponService couponService;
@@ -38,6 +39,15 @@ public class CouponView implements Serializable {
     public void resetView(){
         coupons = null;
         assignedCoupons = null;
+        couponsByClientId = null;
     }
+
+    public List<Coupon> findCouponsByClientId(CouponTask couponTask){
+        if(couponsByClientId == null){
+            couponsByClientId = couponService.findCouponsByClientId(couponTask.getClientId());
+        }
+        return couponsByClientId;
+    }
+
 
 }

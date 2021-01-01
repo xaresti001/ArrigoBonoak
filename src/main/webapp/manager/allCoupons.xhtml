@@ -35,6 +35,52 @@
                 <f:facet name="header">Buying Time</f:facet>
                 #{coupon.buyingTime}
             </h:column>
+
+            <h:column>
+                <f:facet name="header">Delete Coupon</f:facet>
+                <h:form>
+                    <h:commandButton actionListener="#{couponTask.deleteCoupon(coupon, couponView)}" value="Delete"/>
+                </h:form>
+            </h:column>
+        </h:dataTable>
+
+        <h:form value="#{couponForm}">
+            Search by Client ID: <h:inputText value="#{couponForm.clientId}"></h:inputText>
+            <h:commandButton actionListener="#{couponTask.setClientIdForCouponSearch(couponForm, couponView)}" value="Search"/>
+        </h:form>
+
+        <h:dataTable value="#{couponView.findCouponsByClientId(couponTask)}" var="coupon" border="2">
+            <h:column>
+                <f:facet name="header">Coupon ID</f:facet>
+                #{coupon.id}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Type</f:facet>
+                #{coupon.type}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Price</f:facet>
+                #{coupon.price}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Client ID</f:facet>
+                #{coupon.clientId}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Buying Time</f:facet>
+                #{coupon.buyingTime}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Delete Coupon</f:facet>
+                <h:form>
+                    <h:commandButton actionListener="#{couponTask.deleteCoupon(coupon, couponView)}" value="Delete"/>
+                </h:form>
+            </h:column>
         </h:dataTable>
 
 
