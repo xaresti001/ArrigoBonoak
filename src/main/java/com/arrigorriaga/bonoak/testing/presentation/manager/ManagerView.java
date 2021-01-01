@@ -17,28 +17,5 @@ import java.util.List;
 @Named
 public class ManagerView implements Serializable {
 
-    private List<Coupon> coupon;
-    private List<Coupon> selectedCoupon;
-    private int show = 0;
-    private List<Coupon> temp;
-    @EJB
-    private CouponService couponService;
-
-    public List<Coupon> findAllCoupons(){
-        if(coupon == null){
-            coupon = couponService.findAllCoupons();
-        }
-        return coupon;
-    }
-
-
-
-
-    public void resetView(){
-        coupon = null;
-    }
-
-
-
 
 }

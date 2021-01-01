@@ -9,9 +9,39 @@
     <ui:define name="content">
         <br/>
 
+        <h2>Available Actions for Manager</h2>
+        <table>
+            <tr>
+                <td>
+                    <form action="allCoupons.xhtml">
+                        <button type="submit">List All Coupons</button>
+                    </form>
+                </td>
+
+                <td>
+                    <form action="asignedCoupons.xhtml">
+                        <button type="submit">List Asigned Coupons</button>
+                    </form>
+                </td>
+
+                <td>
+                    <form action="allClients.xhtml">
+                        <button type="submit">Clients Management</button>
+                    </form>
+                </td>
+
+                <td>
+                    <form action="createCoupons.xhtml">
+                        <button type="submit">Create New Coupons</button>
+                    </form>
+                </td>
+
+            </tr>
+        </table>
+
 
         <h2>All Coupons List</h2>
-        <h:dataTable value="#{managerView.findAllCoupons()}" var="coupon" border="2">
+        <h:dataTable value="#{couponView.findAllCoupons()}" var="coupon" border="2">
             <h:column>
                 <f:facet name="header">Coupon ID</f:facet>
                 #{coupon.id}
@@ -39,18 +69,18 @@
         </h:dataTable>
 
         <h2>Create New Coupons</h2>
-        <h:form value="#{managerForm}" var="newCoupon">
+        <h:form value="#{couponForm}">
             <br/>
-            Starting from Coupon ID: <h:inputText value="#{managerForm.id}"/>
+            Starting from Coupon ID: <h:inputText value="#{couponForm.id}"/>
             <br/>
-            Coupon amount: <h:inputText value="#{managerForm.amount}"/>
+            Coupon amount: <h:inputText value="#{couponForm.amount}"/>
             <br/>
-            Coupon type: <h:inputText value="#{managerForm.type}"/>
+            Coupon type: <h:inputText value="#{couponForm.type}"/>
             <br/>
-            Coupon price: <h:inputText value="#{managerForm.price}"/>
+            Coupon price: <h:inputText value="#{couponForm.price}"/>
             <br/>
-            <h:commandButton actionListener="#{managerTask.createSetOfCoupons(managerForm, managerView)}" value="Create Set"/>
-            <h:outputText value="#{managerTask.message}"/>
+            <h:commandButton actionListener="#{couponTask.createSetOfCoupons(managerForm, managerView)}" value="Create Set"/>
+            <h:outputText value="#{couponTask.message}"/>
         </h:form>
 
 

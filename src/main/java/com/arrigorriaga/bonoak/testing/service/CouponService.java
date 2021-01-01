@@ -1,6 +1,7 @@
 package com.arrigorriaga.bonoak.testing.service;
 
 import com.arrigorriaga.bonoak.testing.model.Coupon;
+import com.arrigorriaga.bonoak.testing.presentation.coupon.CouponForm;
 import com.arrigorriaga.bonoak.testing.presentation.manager.ManagerForm;
 import com.arrigorriaga.bonoak.testing.repo.CouponRepo;
 import lombok.Data;
@@ -63,11 +64,11 @@ public class CouponService {
         return coupon;
     }
 
-    public boolean createSetOfCoupons(ManagerForm managerForm){
+    public boolean createSetOfCoupons(CouponForm couponForm){
         boolean control = false;
         Coupon temp;
-        for(int i = 0; i<managerForm.getAmount(); i++){
-            temp = new Coupon(managerForm.getId()+i, managerForm.getType(), managerForm.getPrice(), 0);
+        for(int i = 0; i<couponForm.getAmount(); i++){
+            temp = new Coupon(couponForm.getId()+i, couponForm.getType(), couponForm.getPrice(), 0);
             if(createCoupon(temp)==null){
                 control = true;
             }

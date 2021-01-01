@@ -10,9 +10,6 @@ import java.io.Serializable;
 @Named
 @RequestScoped
 public class ManagerForm implements Serializable {
-    private int id;
-    private int amount;
-    private int type;
-    private float price;
+
 
 }

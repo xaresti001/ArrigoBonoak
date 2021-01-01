@@ -1,6 +1,7 @@
 package com.arrigorriaga.bonoak.testing.presentation.manager;
 
 
+import com.arrigorriaga.bonoak.testing.presentation.coupon.CouponView;
 import com.arrigorriaga.bonoak.testing.service.CouponService;
 import lombok.Data;
 
@@ -14,20 +15,7 @@ import java.io.Serializable;
 @SessionScoped
 public class ManagerTask implements Serializable {
 
-    @EJB
-    private CouponService couponService;
-    private String message;
 
-    public void createSetOfCoupons(ManagerForm managerForm, ManagerView managerView){
-        boolean control = couponService.createSetOfCoupons(managerForm);
-        if(control){
-            message = "An error occurred while creating the Set Of Coupons. Some of the coupons where already created in the DataBase.";
-        }else{
-            message = "Set Of Coupons created successfully!";
-        }
-        managerView.resetView();
-
-    }
 
 
 }
