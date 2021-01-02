@@ -27,6 +27,7 @@ public class UserTask implements Serializable {
     private boolean showUpdateUserName;
     private boolean showUpdateUserLastName;
     private boolean showUpdateUserRole;
+    private String searchRole;
 
 
 
@@ -89,6 +90,13 @@ public class UserTask implements Serializable {
             message = "User updated successfully";
         }
         showUpdateUserLastName = false;
+        userView.resetView();
+    }
+
+    public void setRoleForUserSearch(UserForm userForm, UserView userView){
+        Role role = userView.getRoleMenu().get(userForm.getRoleId());
+        userForm.setRole(role.getRoleName());
+        searchRole = userForm.getRole();
         userView.resetView();
     }
 }

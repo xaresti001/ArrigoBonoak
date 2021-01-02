@@ -26,6 +26,7 @@ public class UserView {
 
     private List<User> allUsers;
     private List<User> allUsersByRole;
+
     private List<Role> roleMenu;
     private Map<Integer, Role> roleMenuMap;
 

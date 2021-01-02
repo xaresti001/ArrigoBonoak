@@ -10,8 +10,15 @@
         <br/>
 
         <h2>All Clients List</h2>
-        <h:commandButton actionListener="#{userView.resetView()}" value="Refresh"/>
-        <h:dataTable value="#{userView.findAllUsersByRole('client')}" var="client" border="2">
+        <h:form value="#{userForm}">
+            <h:selectOneMenu value="#{userForm.roleId}">
+                <f:selectItems value="#{userView.findUserRoleMenu()}" var="item" itemValue="#{item.roleId}" itemLabel="#{item.roleName}"/>
+            </h:selectOneMenu>
+            <h:commandButton actionListener="#{userTask.setRoleForUserSearch(userForm, userView)}" value="Search!"/>
+        </h:form>
+
+
+        <h:dataTable value="#{userView.findAllUsersByRole(userTask.searchRole)}" var="client" border="2">
             <h:column>
                 <f:facet name="header">Client ID</f:facet>
                 #{client.id}
@@ -48,7 +55,7 @@
                     <h:commandButton actionListener="#{userTask.setShowUpdateUserRole(true)}" value="Update"/>
                 </h:form>
                 <h:form value="#{userForm}" rendered="#{userTask.showUpdateUserRole}">
-                    <h:selectOneMenu id="mota" value="#{userForm.roleId}">
+                    <h:selectOneMenu value="#{userForm.roleId}">
                         <f:selectItems value="#{userView.findUserRoleMenu()}" var="item" itemValue="#{item.roleId}" itemLabel="#{item.roleName}"/>
                     </h:selectOneMenu>
                     <h:commandButton actionListener="#{userTask.changeUserRole(userForm, client, userView)}" value="Update Name"/>
