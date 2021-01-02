@@ -44,6 +44,15 @@
             <h:column>
                 <f:facet name="header">Role</f:facet>
                 #{client.role}
+                <h:form rendered="#{!userTask.showUpdateUserRole}">
+                    <h:commandButton actionListener="#{userTask.setShowUpdateUserRole(true)}" value="Update"/>
+                </h:form>
+                <h:form value="#{userForm}" rendered="#{userTask.showUpdateUserRole}">
+                    <h:selectOneMenu id="mota" value="#{userForm.roleId}">
+                        <f:selectItems value="#{userView.findUserRoleMenu()}" var="item" itemValue="#{item.roleId}" itemLabel="#{item.roleName}"/>
+                    </h:selectOneMenu>
+                    <h:commandButton actionListener="#{userTask.changeUserRole(userForm, client, userView)}" value="Update Name"/>
+                </h:form>
             </h:column>
 
             <h:column>
