@@ -25,6 +25,8 @@ public class UserTask implements Serializable {
     private String message;
 
     private boolean showUpdateUserName;
+    private boolean showUpdateUserLastName;
+
 
     public void deleteUser(User user, UserView userView){
         boolean control = userService.deleteUserById(user.getId());
@@ -59,6 +61,18 @@ public class UserTask implements Serializable {
             message = "User updated successfully";
         }
         showUpdateUserName = false;
+        userView.resetView();
+    }
+
+    public void changeUserLastName(UserForm userForm, User user, UserView userView){
+        user.setLastName(userForm.getLastName());
+        User temp = userService.updateUser(user);
+        if(temp == null){
+            message = "An error occurred while updating the User ID";
+        }else{
+            message = "User updated successfully";
+        }
+        showUpdateUserLastName = false;
         userView.resetView();
     }
 }

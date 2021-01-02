@@ -32,6 +32,13 @@
             <h:column>
                 <f:facet name="header">Last Name</f:facet>
                 #{client.lastName}
+                <h:form rendered="#{!userTask.showUpdateUserLastName}">
+                    <h:commandButton actionListener="#{userTask.setShowUpdateUserLastName(true)}" value="Update"/>
+                </h:form>
+                <h:form value="#{userForm}" rendered="#{userTask.showUpdateUserLastName}">
+                    <h:inputText value="#{userForm.lastName}"/>
+                    <h:commandButton actionListener="#{userTask.changeUserLastName(userForm, client, userView)}" value="Update Name"/>
+                </h:form>
             </h:column>
 
             <h:column>
