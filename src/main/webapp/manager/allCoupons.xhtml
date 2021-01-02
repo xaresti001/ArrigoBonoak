@@ -45,7 +45,7 @@
         </h:dataTable>
 
         <h:form value="#{couponForm}">
-            Search by Client ID: <h:inputText value="#{couponForm.clientId}"></h:inputText>
+            Search by Client ID: <h:inputText value="#{couponForm.clientId}"/>
             <h:commandButton actionListener="#{couponTask.setClientIdForCouponSearch(couponForm, couponView)}" value="Search"/>
         </h:form>
 

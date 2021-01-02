@@ -56,4 +56,12 @@ public class UserService {
     public List<User> findAllUsers(){
         return userRepo.findAll();
     }
+
+    public List<User> findAllUsersByRole(String role){
+        return userRepo.findUsersByRoleIs(role);
+    }
+
+    public List<User> findAllClients(){
+        return userRepo.findUsersByRoleIs("client");
+    }
 }

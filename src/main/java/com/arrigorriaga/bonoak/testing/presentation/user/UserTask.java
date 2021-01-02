@@ -1,0 +1,50 @@
+package com.arrigorriaga.bonoak.testing.presentation.user;
+
+import com.arrigorriaga.bonoak.testing.model.Role;
+import com.arrigorriaga.bonoak.testing.model.User;
+import com.arrigorriaga.bonoak.testing.service.RoleService;
+import com.arrigorriaga.bonoak.testing.service.UserService;
+import lombok.Data;
+
+import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
+import java.io.Serializable;
+
+
+@Data
+@Named
+@SessionScoped
+public class UserTask implements Serializable {
+
+    @EJB
+    private UserService userService;
+    @EJB
+    private RoleService roleService;
+
+    private String message;
+
+    public void deleteUser(User user, UserView userView){
+        boolean control = userService.deleteUserById(user.getId());
+        if(control){
+            message = "User deleted successfully.";
+        }else{
+            message = "User not found. Could not be deleted.";
+        }
+        userView.resetView();
+    }
+
+    public void createUser(UserForm userForm, UserView userView){
+        Role role = userView.getRoleMenu().get(userForm.getRoleId());
+        userForm.setRole(role.getRoleName());
+
+        User user = new User(userForm.getId(), userForm.getName(), userForm.getLastName(), userForm.getRole());
+        User control = userService.createUser(user);
+        if(control == null){
+            message = "User already existing. Error while creating the user.";
+        }else{
+            message = "User created successfully.";
+        }
+        userView.resetView();
+    }
+}
