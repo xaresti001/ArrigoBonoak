@@ -89,7 +89,7 @@ public class UserTask implements Serializable {
         }else{
             message = "User updated successfully";
         }
-        showUpdateUserLastName = false;
+
         userView.resetView();
     }
 
@@ -97,6 +97,7 @@ public class UserTask implements Serializable {
         Role role = userView.getRoleMenu().get(userForm.getRoleId());
         userForm.setRole(role.getRoleName());
         searchRole = userForm.getRole();
+        showUpdateUserLastName = false;
         userView.resetView();
     }
 }

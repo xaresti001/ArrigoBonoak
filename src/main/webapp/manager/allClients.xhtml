@@ -5,9 +5,27 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <ui:composition template="../layout.xhtml">
-    <ui:define name="title">MANAGER PANEL</ui:define>
+    <ui:define name="title">USER MANAGEMENT PANEL</ui:define>
     <ui:define name="content">
         <br/>
+
+        <h2>Create New User</h2>
+        <h:form value="#{userForm}">
+            <br/>
+            User ID: <h:inputText value="#{userForm.id}"/>
+            <br/>
+            User Name: <h:inputText value="#{userForm.name}"/>
+            <br/>
+            User LastName: <h:inputText value="#{userForm.lastName}"/>
+            <br/>
+            User Role: <h:selectOneMenu id="mota" value="#{userForm.roleId}">
+            <f:selectItems value="#{userView.findUserRoleMenu()}" var="item" itemValue="#{item.roleId}" itemLabel="#{item.roleName}"/>
+        </h:selectOneMenu>
+            <br/>
+            <h:commandButton actionListener="#{userTask.createUser(userForm, userView)}" value="Create User" id="submit"/>
+            <br/>
+            <h:outputText value="#{couponTask.message}"/>
+        </h:form>
 
         <h2>All Clients List</h2>
         <h:form value="#{userForm}">
