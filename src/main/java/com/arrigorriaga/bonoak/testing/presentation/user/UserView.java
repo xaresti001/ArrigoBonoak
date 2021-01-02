@@ -43,13 +43,6 @@ public class UserView {
         return allUsersByRole;
     }
 
-    public List<User> findAllClients(){
-        if(allUsersByRole == null){
-            allUsersByRole = userService.findAllClients();
-        }
-        return allUsersByRole;
-    }
-
     public void resetView(){
         allUsers = null;
         allUsersByRole = null;

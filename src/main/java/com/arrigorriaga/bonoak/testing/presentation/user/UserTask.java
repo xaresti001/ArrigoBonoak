@@ -24,6 +24,8 @@ public class UserTask implements Serializable {
 
     private String message;
 
+    private boolean showUpdateUserName;
+
     public void deleteUser(User user, UserView userView){
         boolean control = userService.deleteUserById(user.getId());
         if(control){
@@ -34,17 +36,29 @@ public class UserTask implements Serializable {
         userView.resetView();
     }
 
-    public void createUser(UserForm userForm, UserView userView){
+    public void createUser(UserForm userForm, UserView userView) {
         Role role = userView.getRoleMenu().get(userForm.getRoleId());
         userForm.setRole(role.getRoleName());
 
         User user = new User(userForm.getId(), userForm.getName(), userForm.getLastName(), userForm.getRole());
         User control = userService.createUser(user);
-        if(control == null){
+        if (control == null) {
             message = "User already existing. Error while creating the user.";
-        }else{
+        } else {
             message = "User created successfully.";
         }
+        userView.resetView();
+    }
+
+    public void changeUserName(UserForm userForm, User user, UserView userView){
+        user.setName(userForm.getName());
+        User temp = userService.updateUser(user);
+        if(temp == null){
+            message = "An error occurred while updating the User ID";
+        }else{
+            message = "User updated successfully";
+        }
+        showUpdateUserName = false;
         userView.resetView();
     }
 }

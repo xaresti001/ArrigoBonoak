@@ -61,7 +61,4 @@ public class UserService {
         return userRepo.findUsersByRoleIs(role);
     }
 
-    public List<User> findAllClients(){
-        return userRepo.findUsersByRoleIs("client");
-    }
 }

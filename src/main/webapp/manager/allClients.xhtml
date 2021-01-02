@@ -11,7 +11,7 @@
 
         <h2>All Clients List</h2>
         <h:commandButton actionListener="#{userView.resetView()}" value="Refresh"/>
-        <h:dataTable value="#{userView.findAllClients()}" var="client" border="2">
+        <h:dataTable value="#{userView.findAllUsersByRole('client')}" var="client" border="2">
             <h:column>
                 <f:facet name="header">Client ID</f:facet>
                 #{client.id}
@@ -20,6 +20,13 @@
             <h:column>
                 <f:facet name="header">Name</f:facet>
                 #{client.name}
+                <h:form rendered="#{!userTask.showUpdateUserName}">
+                    <h:commandButton actionListener="#{userTask.setShowUpdateUserName(true)}" value="Update"/>
+                </h:form>
+                <h:form value="#{userForm}" rendered="#{userTask.showUpdateUserName}">
+                    <h:inputText value="#{userForm.name}"/>
+                    <h:commandButton actionListener="#{userTask.changeUserName(userForm, client, userView)}" value="Update Name"/>
+                </h:form>
             </h:column>
 
             <h:column>
