@@ -38,7 +38,7 @@
 
         <h:dataTable value="#{userView.findAllUsersByRole(userTask.searchRole)}" var="client" border="2">
             <h:column>
-                <f:facet name="header">Client ID</f:facet>
+                <f:facet name="header">User ID</f:facet>
                 #{client.id}
             </h:column>
 
@@ -86,7 +86,7 @@
             </h:column>
 
             <h:column>
-                <f:facet name="header">Delete Client</f:facet>
+                <f:facet name="header">Delete User</f:facet>
                 <h:form>
                     <h:commandButton actionListener="#{userTask.deleteUser(client, userView)}" value="Delete"/>
                 </h:form>
