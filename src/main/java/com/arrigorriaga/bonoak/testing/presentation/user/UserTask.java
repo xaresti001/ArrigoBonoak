@@ -52,6 +52,7 @@ public class UserTask implements Serializable {
         } else {
             message = "User created successfully.";
         }
+        userForm.crearForm();
         userView.resetView();
     }
 
