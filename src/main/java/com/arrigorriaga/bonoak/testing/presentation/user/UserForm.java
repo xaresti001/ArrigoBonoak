@@ -19,4 +19,12 @@ public class UserForm implements Serializable {
     private String role;
     private int roleId;
 
+    public void crearForm(){
+        id = 0;
+        name = null;
+        lastName = null;
+        role = null;
+        roleId = 0;
+    }
+
 }

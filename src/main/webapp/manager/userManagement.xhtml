@@ -5,7 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <ui:composition template="../layout.xhtml">
-    <ui:define name="title">USER MANAGEMENT</ui:define>
+    <ui:define name="title">USER MANAGEMENT PANEL</ui:define>
     <ui:define name="content">
         <br/>
 
@@ -22,8 +22,7 @@
             <f:selectItems value="#{userView.findUserRoleMenu()}" var="item" itemValue="#{item.roleId}" itemLabel="#{item.roleName}"/>
         </h:selectOneMenu>
             <br/>
-            <h:commandButton actionListener="#{userTask.createUser(userForm, userView)}" value="Create User" type="submit"/>
-            <h:commandButton type="reset" value="Clear"/>
+            <h:commandButton actionListener="#{userTask.createUser(userForm, userView)}" value="Create User" id="submit"/>
             <br/>
             <h:outputText value="#{couponTask.message}"/>
         </h:form>
@@ -37,39 +36,39 @@
         </h:form>
 
 
-        <h:dataTable value="#{userView.findAllUsersByRole(userTask.searchRole)}" var="user" border="2">
+        <h:dataTable value="#{userView.findAllUsersByRole(userTask.searchRole)}" var="client" border="2">
             <h:column>
-                <f:facet name="header">User ID</f:facet>
-                #{user.id}
+                <f:facet name="header">Client ID</f:facet>
+                #{client.id}
             </h:column>
 
             <h:column>
                 <f:facet name="header">Name</f:facet>
-                #{user.name}
+                #{client.name}
                 <h:form rendered="#{!userTask.showUpdateUserName}">
                     <h:commandButton actionListener="#{userTask.setShowUpdateUserName(true)}" value="Update"/>
                 </h:form>
                 <h:form value="#{userForm}" rendered="#{userTask.showUpdateUserName}">
                     <h:inputText value="#{userForm.name}"/>
-                    <h:commandButton actionListener="#{userTask.changeUserName(userForm, user, userView)}" value="Update Name"/>
+                    <h:commandButton actionListener="#{userTask.changeUserName(userForm, client, userView)}" value="Update Name"/>
                 </h:form>
             </h:column>
 
             <h:column>
                 <f:facet name="header">Last Name</f:facet>
-                #{user.lastName}
+                #{client.lastName}
                 <h:form rendered="#{!userTask.showUpdateUserLastName}">
                     <h:commandButton actionListener="#{userTask.setShowUpdateUserLastName(true)}" value="Update"/>
                 </h:form>
                 <h:form value="#{userForm}" rendered="#{userTask.showUpdateUserLastName}">
                     <h:inputText value="#{userForm.lastName}"/>
-                    <h:commandButton actionListener="#{userTask.changeUserLastName(userForm, user, userView)}" value="Update Name"/>
+                    <h:commandButton actionListener="#{userTask.changeUserLastName(userForm, client, userView)}" value="Update Name"/>
                 </h:form>
             </h:column>
 
             <h:column>
                 <f:facet name="header">Role</f:facet>
-                #{user.role.roleName}
+                #{client.role}
                 <h:form rendered="#{!userTask.showUpdateUserRole}">
                     <h:commandButton actionListener="#{userTask.setShowUpdateUserRole(true)}" value="Update"/>
                 </h:form>
@@ -77,19 +76,19 @@
                     <h:selectOneMenu value="#{userForm.roleId}">
                         <f:selectItems value="#{userView.findUserRoleMenu()}" var="item" itemValue="#{item.roleId}" itemLabel="#{item.roleName}"/>
                     </h:selectOneMenu>
-                    <h:commandButton actionListener="#{userTask.changeUserRole(userForm, user, userView)}" value="Update Name"/>
+                    <h:commandButton actionListener="#{userTask.changeUserRole(userForm, client, userView)}" value="Update Name"/>
                 </h:form>
             </h:column>
 
             <h:column>
                 <f:facet name="header">Registration Time</f:facet>
-                #{user.registrationTime}
+                #{client.registrationTime}
             </h:column>
 
             <h:column>
-                <f:facet name="header">Delete User</f:facet>
+                <f:facet name="header">Delete Client</f:facet>
                 <h:form>
-                    <h:commandButton actionListener="#{userTask.deleteUser(user, userView)}" value="Delete"/>
+                    <h:commandButton actionListener="#{userTask.deleteUser(client, userView)}" value="Delete"/>
                 </h:form>
             </h:column>
         </h:dataTable>

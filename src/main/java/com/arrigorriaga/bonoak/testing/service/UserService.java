@@ -7,10 +7,14 @@ import com.arrigorriaga.bonoak.testing.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@LocalBean
+@Stateless
 public class UserService {
 
     private final UserRepo userRepo;

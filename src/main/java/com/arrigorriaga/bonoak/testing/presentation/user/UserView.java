@@ -30,6 +30,8 @@ public class UserView {
     private List<Role> roleMenu;
     private Map<Integer, Role> roleMenuMap;
 
+    private User user;
+
     public List<User> findAllUsers(){
         if(allUsers == null){
             allUsers = userService.findAllUsers();
@@ -49,6 +51,7 @@ public class UserView {
         allUsersByRole = null;
         roleMenu = null;
         roleMenuMap = null;
+        user = null;
     }
 
     public Collection<Role> findUserRoleMenu() {
@@ -62,5 +65,12 @@ public class UserView {
             }
         }
         return roleMenuMap.values();
+    }
+
+    public User findUserById(int userId){
+        if(user == null){
+            user = userService.findUserById(userId);
+        }
+        return user;
     }
 }

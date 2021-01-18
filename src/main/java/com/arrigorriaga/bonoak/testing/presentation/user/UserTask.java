@@ -29,6 +29,8 @@ public class UserTask implements Serializable {
     private boolean showUpdateUserRole;
     private String searchRole;
 
+    private int userId;
+
 
 
     public void deleteUser(User user, UserView userView){
@@ -52,6 +54,7 @@ public class UserTask implements Serializable {
         } else {
             message = "User created successfully.";
         }
+        userForm.crearForm();
         userView.resetView();
     }
 
@@ -100,4 +103,11 @@ public class UserTask implements Serializable {
         showUpdateUserLastName = false;
         userView.resetView();
     }
+
+    public void findUserById(UserForm userForm, UserView userView){
+        userId = userForm.getId();
+        userForm.crearForm();
+        userView.resetView();
+    }
+
 }
