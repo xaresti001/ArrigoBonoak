@@ -33,6 +33,7 @@ public class AssigmentService {
         this.couponRepo = couponRepo;
     }
 
+    /*
     public Assigment createAssigment(Coupon coupon, User user){
         boolean control = false;
         Assigment assigment = null;
@@ -45,9 +46,12 @@ public class AssigmentService {
         return assigment;
     }
 
+
     private boolean AssigmentConditions(User user){
         boolean control = false;
         List<Coupon> coupons = couponRepo.findCouponsByClientIdIs(user.getId());
 
     }
+
+     */
 }

@@ -68,7 +68,7 @@
 
             <h:column>
                 <f:facet name="header">Role</f:facet>
-                #{client.role}
+                #{client.role.roleName}
                 <h:form rendered="#{!userTask.showUpdateUserRole}">
                     <h:commandButton actionListener="#{userTask.setShowUpdateUserRole(true)}" value="Update"/>
                 </h:form>
