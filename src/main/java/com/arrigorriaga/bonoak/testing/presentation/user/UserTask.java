@@ -43,9 +43,9 @@ public class UserTask implements Serializable {
 
     public void createUser(UserForm userForm, UserView userView) {
         Role role = userView.getRoleMenu().get(userForm.getRoleId());
-        userForm.setRole(role.getRoleName());
+        //userForm.setRole(role.getRoleName());
 
-        User user = new User(userForm.getId(), userForm.getName(), userForm.getLastName(), userForm.getRole());
+        User user = new User(userForm.getId(), userForm.getName(), userForm.getLastName(), role);
         User control = userService.createUser(user);
         if (control == null) {
             message = "User already existing. Error while creating the user.";
@@ -81,8 +81,8 @@ public class UserTask implements Serializable {
 
     public void changeUserRole(UserForm userForm, User user, UserView userView){
         Role role = userView.getRoleMenu().get(userForm.getRoleId());
-        userForm.setRole(role.getRoleName());
-        user.setRole(userForm.getRole());
+        //userForm.setRole(role.getRoleName());
+        user.setRole(role);
         User temp = userService.updateUser(user);
         if(temp == null){
             message = "An error occurred while updating the User ID";

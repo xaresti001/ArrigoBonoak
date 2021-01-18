@@ -32,7 +32,7 @@ public class MainController {
             @RequestParam("lastName") String lastName,
             @RequestParam("id") int id
     ){
-        User user = new User(id, name, lastName, "client");
+        User user = new User(id, name, lastName, null);
         return userService.createUser(user);
     }
 

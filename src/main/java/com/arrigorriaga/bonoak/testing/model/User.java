@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 @Entity
@@ -23,12 +24,15 @@ public class User {
     private String name;
     private String lastName;
     private LocalDateTime registrationTime = LocalDateTime.now();
-    private String role;
+    //private String role;
 
-    public User(int id, String name, String lastName, String role) {
+    public User(int id, String name, String lastName, Role role) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.role = role;
     }
+
+    @ManyToOne
+    private Role role;
 }

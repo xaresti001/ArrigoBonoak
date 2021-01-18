@@ -1,6 +1,8 @@
 package com.arrigorriaga.bonoak.testing.service;
 
+import com.arrigorriaga.bonoak.testing.model.Role;
 import com.arrigorriaga.bonoak.testing.model.User;
+import com.arrigorriaga.bonoak.testing.repo.RoleRepo;
 import com.arrigorriaga.bonoak.testing.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,10 +14,12 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepo userRepo;
+    private final RoleRepo roleRepo;
 
     @Autowired
-    public UserService(UserRepo userRepo) {
+    public UserService(UserRepo userRepo, RoleRepo roleRepo) {
         this.userRepo = userRepo;
+        this.roleRepo = roleRepo;
     }
 
     public User findUserById(int id){
@@ -58,7 +62,7 @@ public class UserService {
     }
 
     public List<User> findAllUsersByRole(String role){
-        return userRepo.findUsersByRoleIs(role);
+        return userRepo.findUsersByRoleIs(roleRepo.findRoleByRoleNameIs(role));
     }
 
 }
