@@ -34,10 +34,11 @@
         </tr>
     </tbody>
 </table>
-<form th:action="@{/view/managerPanel/allUsers}" method="get">
+
+<h2>Search User</h2>
+<form th:action="@{/view/managerPanel/allUsers/searchUser}" method="get">
     <input type="text" name="search"/>
     <button type="submit">Search!</button>
-
 </form>
 
 <h2>Create New User</h2>

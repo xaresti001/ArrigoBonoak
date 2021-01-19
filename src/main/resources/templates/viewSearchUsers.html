@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Search User</title>
 </head>
 <body>
+    User ID: <p th:text="${searchUser.id}"></p>
+    Name: <p th:text="${searchUser.name}"></p>
+    Last name: <p th:text="${searchUser.lastName}"></p>
+    Role: <p th:text="${searchUser.role.roleName}"></p>
+    Registration Time: <p th:text="${searchUser.registrationTime}"></p>
 
 </body>
 </html>
