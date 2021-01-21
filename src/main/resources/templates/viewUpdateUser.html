@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <form th:action="@{./update/}" method="post" th:object="${searchUser}">
+        <a>User ID: </a><a th:text="*{id}"></a><br/>
+        <input type="hidden" th:field="*{id}"/>
+        Name: <input type="text" th:field="*{name}"/><br/>
+        Last name: <input type="text" th:field="*{lastName}"/><br/>
+        Role: <select th:field="*{role}">
+            <option th:each="role : ${allRoles}" th:value="${role.roleId}" th:text="${role.roleName}"></option>
+        </select><br/>
+        <button type="submit">Update!</button>
+
+    </form>
+
+</body>
+</html>

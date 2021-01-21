@@ -26,9 +26,14 @@
             <td th:text="${user.registrationTime}"></td>
             <td th:text="${user.role.roleName}"></td>
             <td>
-                <form th:action="@{/view/managerPanel/allUsers/deleteUser}" method="post" th:object="${userForm}">
+                <form th:action="@{./deleteUser/}" method="post" th:object="${userForm}">
                     <input type="hidden" name="id" th:value="${user.id}"/>
                     <button type="submit">Delete!</button>
+                </form>
+
+                <form th:action="@{./updateUser/}" method="get" th:object="${userForm}">
+                    <input type="hidden" name="id" th:value="${user.id}"/>
+                    <button type="submit">Update!</button>
                 </form>
             </td>
         </tr>
@@ -36,13 +41,13 @@
 </table>
 
 <h2>Search User</h2>
-<form th:action="@{/view/managerPanel/allUsers/searchUser}" method="get">
+<form th:action="@{./searchUser/}" method="get">
     <input type="text" name="search"/>
     <button type="submit">Search!</button>
 </form>
 
 <h2>Create New User</h2>
-<form th:action="@{/view/managerPanel/allUsers/createUser}" method="post" th:object="${newUser}">
+<form th:action="@{./createUser/}" method="post" th:object="${newUser}">
     <input type="text" th:field="*{id}" placeholder="Enter ID">
     <input type="text" th:field="*{name}" placeholder="Enter name"/>
     <input type="text" th:field="*{lastName}" placeholder="Enter last name"/>
