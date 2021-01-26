@@ -55,7 +55,9 @@ public class UserService {
 
     public User updateUser (User updateUser){
         User user = null;
-        if(userRepo.existsById(updateUser.getId())){
+        Optional<User> optional = userRepo.findById(updateUser.getId());
+        if(optional.isPresent()){
+            updateUser.setRegistrationTime(optional.get().getRegistrationTime());
             user = userRepo.save(updateUser);
         }
         return user;

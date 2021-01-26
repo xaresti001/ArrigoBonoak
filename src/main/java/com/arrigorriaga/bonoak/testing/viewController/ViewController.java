@@ -51,9 +51,7 @@ public class ViewController {
 
     @PostMapping("/managerPanel/allUsers/deleteUser/")
     public String deleteUserById(@ModelAttribute("userForm") User user, ModelMap model){
-        boolean control = userService.deleteUserById(user.getId());
-        System.out.println(control);
-        System.out.println(user.getId());
+        userService.deleteUserById(user.getId());
         model.clear();
         return "redirect:/view/managerPanel/allUsers/";
     }
