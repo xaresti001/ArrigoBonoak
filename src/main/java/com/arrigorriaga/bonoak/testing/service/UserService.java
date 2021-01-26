@@ -1,6 +1,5 @@
 package com.arrigorriaga.bonoak.testing.service;
 
-import com.arrigorriaga.bonoak.testing.model.Role;
 import com.arrigorriaga.bonoak.testing.model.User;
 import com.arrigorriaga.bonoak.testing.repo.RoleRepo;
 import com.arrigorriaga.bonoak.testing.repo.UserRepo;
